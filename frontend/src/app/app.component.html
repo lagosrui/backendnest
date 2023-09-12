@@ -1,0 +1,131 @@
+<style>
+  .container_70 {
+    width: 60%;
+    margin-left: 10%;
+  }
+
+  .bg-custom-image {
+    background-image: url('https://img.freepik.com/vetores-gratis/ilustracao-de-macaco-estilo-nft-desenhada-a-mao_23-2149622021.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+</style>
+
+<div class="bg-brand-light">
+  <div class="p-4">
+    <div class="flex items-center justify-between gap-6">
+      <img src="https://images.squarespace-cdn.com/content/v1/58002e6837c581992d781204/1651707921847-OLXRNN70XR7VGPS9ZQS8/crop-43-43-1582-1582-0-donate-icon.png?format=2500w" class="w-16 bg-wite" />
+      <div class="flex flex-row items-center gap-4 text-sm">
+        <span
+          class="p-4 font-bold text-white rounded bg-brand-secondary"
+          *ngIf="currentChainId()"
+          >Network ID {{ currentChainId() }}</span
+        >
+        <span
+          class="p-4 font-bold text-white break-all rounded bg-brand-secondary"
+          *ngIf="currentAccount()"
+          >{{ currentAccount() }}</span
+        >
+        <span
+          class="p-4 font-bold text-white break-all rounded bg-brand-secondary"
+          *ngIf="balance()"
+          >{{ balance() }}</span
+        >
+        <span
+          class="p-4 font-bold text-white break-all rounded cursor-pointer bg-brand-secondary"
+          *ngIf="hasMetamask && !currentAccount()"
+          (click)="connectWallet()"
+          >CONNECT WALLET</span
+        >
+        <span
+          class="p-4 font-bold text-white rounded bg-brand-secondary"
+          *ngIf="!hasMetamask"
+          >PLEASE INSTALL METAMASK</span
+        >
+      </div>
+    </div>
+    <table
+      class="text-gray-500 font-bold rounded bg-white break-all mt-10 w-full"
+      *ngIf="tokenBalances.length"
+    >
+      <thead class="bg-gray-500 bg-opacity-10">
+        <tr>
+          <th class="px-6 py-4">Contract Address</th>
+          <th class="px-6 py-4">Token Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let tokenBalance of tokenBalances">
+          <tr class="border-b last:border-b-0">
+            <td class="px-6 py-4">
+              {{ tokenBalance.contractAddress }}
+            </td>
+            <td class="px-6 py-4">
+              {{ tokenBalance.tokenBalance }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex bg-brand-background">
+
+    <div class="w-1/5 h-screen overflow-y-auto border border-gray-300 shadow-lg p-4 bg-white">
+        <ul class="mt-12">
+        <li>
+            <a routerLink="dashboard" class="block text-center rounded py-5 my-5 bg-brand-secondary text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110">
+            <b>Dashboard</b>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/proposals" class="block text-center rounded py-5 my-5 bg-brand-secondary text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110">
+            <b>Open Campaigns</b>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/tracking" class="block text-center rounded py-5 my-5 bg-brand-secondary text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110">
+            <b>Closed Campaigns</b>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/perfil" class="block text-center rounded py-5 my-5 bg-brand-secondary text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110">
+            <b>Perfil</b>
+            </a>
+        </li>
+        <li>
+          <a routerLink="/create-proposal" class="block text-center rounded py-5 my-5 bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110"> <!--*ngIf="hasKyc" -->
+            <b class="text-white">Create Proposal</b>
+          </a>
+        </li>
+        </ul>
+      
+      
+  
+        <div class="flex justify-center mt-20">
+          <div class="bg-custom-image items-center rounded-full h-[20vh] w-[20vh]">
+          </div>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl p-5"><b>Perfil</b></p>
+          <div *ngIf="user">
+            <h1>{{ user.usermane }}</h1>
+            <img [src]="user.image" alt="User Image">
+            <p>Email: {{ user.email }}</p>
+            <p>Description: {{ user.description }}</p>
+            <p>Wallet: {{ user.wallet }}</p>
+            <p>Registration Date: {{ user.registrationDate | date }}</p>
+            <!-- you can add other fields similarly -->
+          </div>
+        </div>
+      
+        
+    </div>
+
+    <!-- Scrollable Main Content (80% width) -->
+    <div class="container_70">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

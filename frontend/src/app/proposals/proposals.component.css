@@ -1,0 +1,27 @@
+/* proposals.component.css */
+
+/* Center the title */
+.text-center {
+    text-align: center;
+}
+
+/* Prevent Receiver Address from wrapping */
+.attribute .value {
+    white-space: nowrap;
+}
+
+/* Adjust font size */
+.text-xl {
+    font-size: 20px; /* Adjust as needed */
+}
+
+/* Add spacing between proposal containers */
+.bg-white {
+    margin-bottom: 20px;
+}
+
+/* Style labels */
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+}

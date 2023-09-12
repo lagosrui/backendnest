@@ -1,0 +1,70 @@
+<br/>
+
+<div class="m-auto bg-white">
+
+    <div class="w-[80%] m-auto">
+        <div class="bg-white p-8 rounded-lg text-center" *ngIf="countdown">
+            <span class="font-bold">{{ countdown }} </span>
+        </div>
+
+        <br/>
+        <div class="w-full h-4 bg-brand-background rounded-full mt-2 border-brand-primary">
+            <div class="h-full bg-brand-primary rounded-full" [style.width.%]="raisedPercentage"></div>
+        </div>
+        <div class="flex justify-between">
+            <span><b>Value Raised:</b> {{proposal.amountRequested - missingBalance}} </span>
+            <span><b>Value Requested:</b> {{proposal.amountRequested}}</span>
+        </div>
+        <br/>
+          
+        <div class="flex">
+              
+            <div class="w-2/5 overflow-y-auto justify-center">
+                <div class="flex justify-center">
+                    <div class="bg-gray-500 items-center rounded-full h-[20vh] w-[20vh]"></div>
+                </div>
+                <div class="text-center ">
+                    <p class="text-2xl p-5"><b>{{proposal.title}}</b></p>
+                </div>
+            </div>
+            
+            <div class="w-3/5 overflow-y-auto">
+                <div class="bg-brand-background w-full mb-10 p-3 text-center rounded-lg">
+                    <b>Amount Requested</b>
+                    <br/>
+                    {{proposal.amountRequested}}
+                </div> 
+                <div class="bg-brand-background w-full mb-10 p-3 text-center rounded-lg">
+                    <b>Reciever Address</b>
+                    <br/>
+                    {{proposal.receiverAddress}}</div>
+                <div class="bg-brand-background w-full mb-10 p-3 text-center rounded-lg">
+                    <b>Campaign Address</b>
+                    <br/>
+                    {{proposal.proposalAddress}}</div>
+            </div>
+            
+        </div>
+    
+        <br/>
+        <div class="bg-brand-background m-auto mb-10 p-3 rounded-lg">
+            <p>{{ proposal.description }}</p>
+        </div>
+        <br/>
+        <div *ngIf="contractOpen">
+            <div class="flex" *ngIf="!readyToClose">
+                <div class="w-1/2 p-5">
+                  <input type="text" #inputRef1 class="w-full px-3 py-2 placeholder-gray-400 text-gray-700 h-[6vh] border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" placeholder="Amount to donate">
+                </div>
+                <div class="w-1/2 p-5">
+                  <button (click)="donate(inputRef1.value)" class="w-full block text-center rounded bg-brand-secondary p-5 text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110"><b>Donate</b></button>
+                </div>
+            </div> 
+
+            <div class="w-1/2 p-5" *ngIf="readyToClose">
+                <button (click)="closeCampaign()" class="w-full block text-center rounded bg-brand-secondary p-5 text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110"><b>Close Campaign</b></button>
+            </div>      
+            <br/>    
+        </div>
+
+</div>

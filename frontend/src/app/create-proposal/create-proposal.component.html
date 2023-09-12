@@ -1,0 +1,21 @@
+
+<br/>
+<div class="m-auto bg-white text-center">
+
+    <br/>
+    <b class="text-2xl">Create New Campaign</b>
+    <br/>
+    <br/>
+
+    <div class="w-[50%] m-auto">
+        <input class="w-full px-3 py-2 mb-5 placeholder-gray-400 text-gray-700 h-[6vh] border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" #inputRef1 placeholder="Proposal Name">
+        <input class="w-full px-3 py-2 mb-5 placeholder-gray-400 text-gray-700 h-[6vh] border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" #inputRef2 placeholder="Description">
+        <input class="w-full px-3 py-2 mb-5 placeholder-gray-400 text-gray-700 h-[6vh] border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" #inputRef3 placeholder="Category">
+        <input class="w-full px-3 py-2 mb-5 placeholder-gray-400 text-gray-700 h-[6vh] border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" #inputRef4 placeholder="Amount requested">
+        <input class="w-full px-3 py-2 mb-5 placeholder-gray-400 text-gray-700 h-[6vh] border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent" #inputRef5 placeholder="Timestamp">  
+    </div>
+
+    <button class="w-full block text-center rounded py-5 my-5 bg-brand-secondary text-white hover:bg-brand-primary transition-transform duration-500 ease-in-out transform hover:scale-110" (click)="createProposal(inputRef1.value, inputRef4.value, inputRef5.value, inputRef3.value, inputRef2.value)">
+        <b class="text-white">Create Proposal</b>
+    </button>
+</div>
